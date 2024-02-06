@@ -25,6 +25,7 @@ public class User implements UserDetails {
     private String surname;
     private LocalDate dateOfBirth;
     private String email;
+    private String password;
     private String avatar;
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -55,6 +56,9 @@ public class User implements UserDetails {
         this.email = email;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
@@ -78,11 +82,6 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(String.valueOf(this.role)));
-    }
-
-    @Override
-    public String getPassword() {
-        return null;
     }
 
     @Override
