@@ -18,12 +18,8 @@ public class Product {
     private String category;
     private double price;
     private String imageUrl;
-    private boolean isAvailable;
     private int discount;
     private int quantity;
-    @ManyToOne
-    @JoinColumn(name = "cart_id")
-    private Cart cart;
 
     public void setName(String name) {
         this.name = name;
@@ -45,10 +41,6 @@ public class Product {
         this.imageUrl = imageUrl;
     }
 
-    public void setAvailable(boolean available) {
-        isAvailable = available;
-    }
-
     public void setDiscount(int discount) {
         this.discount = discount;
     }
@@ -57,7 +49,4 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
 }

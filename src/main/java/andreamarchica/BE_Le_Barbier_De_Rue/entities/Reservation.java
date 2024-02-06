@@ -17,7 +17,9 @@ public class Reservation {
     private LocalDateTime reservationDate;
     private LocalDateTime reservedOn;
     private boolean alreadyPayed;
+    @Enumerated(EnumType.STRING)
     private HaircutType haircutType;
+    @Enumerated(EnumType.STRING)
     private BeardcutType beardcutType;
     @ManyToOne
     @JoinColumn(name = "user_id")

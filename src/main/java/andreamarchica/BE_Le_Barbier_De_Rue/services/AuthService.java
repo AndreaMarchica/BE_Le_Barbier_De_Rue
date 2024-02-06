@@ -4,10 +4,10 @@ import andreamarchica.BE_Le_Barbier_De_Rue.entities.Role;
 import andreamarchica.BE_Le_Barbier_De_Rue.entities.User;
 import andreamarchica.BE_Le_Barbier_De_Rue.exceptions.EmailAlreadyInDbException;
 import andreamarchica.BE_Le_Barbier_De_Rue.exceptions.UnauthorizedException;
-import andreamarchica.BE_Le_Barbier_De_Rue.payloads.AuthRequestDTO;
-import andreamarchica.BE_Le_Barbier_De_Rue.payloads.NewUserDTO;
-import andreamarchica.BE_Le_Barbier_De_Rue.payloads.NewUserResponseDTO;
-import andreamarchica.BE_Le_Barbier_De_Rue.payloads.TokenResponseDTO;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.auth.AuthRequestDTO;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.user.NewUserDTO;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.user.NewUserResponseDTO;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.auth.TokenResponseDTO;
 import andreamarchica.BE_Le_Barbier_De_Rue.repository.UsersRepository;
 import andreamarchica.BE_Le_Barbier_De_Rue.security.JWTTtools;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class AuthService {

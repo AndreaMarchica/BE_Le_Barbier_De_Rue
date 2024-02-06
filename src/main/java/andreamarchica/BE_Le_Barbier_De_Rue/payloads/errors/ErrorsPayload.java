@@ -1,4 +1,4 @@
-package andreamarchica.BE_Le_Barbier_De_Rue.payloads;
+package andreamarchica.BE_Le_Barbier_De_Rue.payloads.errors;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

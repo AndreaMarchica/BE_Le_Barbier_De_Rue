@@ -16,10 +16,9 @@ public class Cart {
     @GeneratedValue
     private UUID id;
     private int discount;
-    @OneToMany(mappedBy = "cart")
-    @JsonIgnore
-    List<Product> productList;
     private double totalPrice;
+    @OneToMany(cascade = CascadeType.ALL)
+    List<Product> productList;
     @OneToOne
     private User user;
     @OneToOne

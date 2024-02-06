@@ -1,8 +1,8 @@
 package andreamarchica.BE_Le_Barbier_De_Rue.exceptions;
 
-import andreamarchica.BE_Le_Barbier_De_Rue.payloads.ErrorsDTO;
-import andreamarchica.BE_Le_Barbier_De_Rue.payloads.ErrorsDTOWithList;
-import andreamarchica.BE_Le_Barbier_De_Rue.payloads.ErrorsPayload;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.errors.ErrorsDTO;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.errors.ErrorsDTOWithList;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.errors.ErrorsPayload;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;

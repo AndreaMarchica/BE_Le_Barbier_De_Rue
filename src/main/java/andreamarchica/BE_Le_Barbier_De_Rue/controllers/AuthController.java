@@ -1,10 +1,10 @@
 package andreamarchica.BE_Le_Barbier_De_Rue.controllers;
 
 import andreamarchica.BE_Le_Barbier_De_Rue.exceptions.BadRequestException;
-import andreamarchica.BE_Le_Barbier_De_Rue.payloads.AuthRequestDTO;
-import andreamarchica.BE_Le_Barbier_De_Rue.payloads.NewUserDTO;
-import andreamarchica.BE_Le_Barbier_De_Rue.payloads.NewUserResponseDTO;
-import andreamarchica.BE_Le_Barbier_De_Rue.payloads.TokenResponseDTO;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.auth.AuthRequestDTO;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.user.NewUserDTO;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.user.NewUserResponseDTO;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.auth.TokenResponseDTO;
 import andreamarchica.BE_Le_Barbier_De_Rue.services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

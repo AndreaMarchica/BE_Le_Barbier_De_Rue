@@ -2,7 +2,7 @@ package andreamarchica.BE_Le_Barbier_De_Rue.services;
 
 import andreamarchica.BE_Le_Barbier_De_Rue.entities.User;
 import andreamarchica.BE_Le_Barbier_De_Rue.exceptions.NotFoundException;
-import andreamarchica.BE_Le_Barbier_De_Rue.payloads.NewUserDTO;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.user.NewUserDTO;
 import andreamarchica.BE_Le_Barbier_De_Rue.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
