@@ -1,6 +1,7 @@
 package andreamarchica.BE_Le_Barbier_De_Rue.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.ToString;
@@ -16,6 +17,7 @@ import java.util.UUID;
 @Entity
 @Getter
 @ToString
+@JsonIgnoreProperties({"password"})
 public class User implements UserDetails {
     @Id
     @GeneratedValue
