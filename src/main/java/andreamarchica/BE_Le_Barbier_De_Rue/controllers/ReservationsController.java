@@ -2,7 +2,7 @@ package andreamarchica.BE_Le_Barbier_De_Rue.controllers;
 
 import andreamarchica.BE_Le_Barbier_De_Rue.entities.Reservation;
 import andreamarchica.BE_Le_Barbier_De_Rue.exceptions.BadRequestException;
-import andreamarchica.BE_Le_Barbier_De_Rue.payloads.reservation.NewReservationDTO;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.NewReservationDTO;
 import andreamarchica.BE_Le_Barbier_De_Rue.services.ReservationsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

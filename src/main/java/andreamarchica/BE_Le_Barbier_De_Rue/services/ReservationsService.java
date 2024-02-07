@@ -2,7 +2,7 @@ package andreamarchica.BE_Le_Barbier_De_Rue.services;
 
 import andreamarchica.BE_Le_Barbier_De_Rue.entities.Reservation;
 import andreamarchica.BE_Le_Barbier_De_Rue.entities.User;
-import andreamarchica.BE_Le_Barbier_De_Rue.payloads.reservation.NewReservationDTO;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.NewReservationDTO;
 import andreamarchica.BE_Le_Barbier_De_Rue.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
