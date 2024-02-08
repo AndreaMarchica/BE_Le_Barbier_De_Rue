@@ -19,7 +19,7 @@ public class Product {
     private double price;
     private String imageUrl;
     private int discount;
-    private int quantity;
+    private int stock;
 
     public void setName(String name) {
         this.name = name;
@@ -45,8 +45,8 @@ public class Product {
         this.discount = discount;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
 }

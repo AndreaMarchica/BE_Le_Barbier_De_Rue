@@ -1,4 +1,4 @@
-package andreamarchica.BE_Le_Barbier_De_Rue.payloads.products;
+package andreamarchica.BE_Le_Barbier_De_Rue.payloads.product;
 
 public record NewProductDTO(
         String name,
@@ -6,6 +6,7 @@ public record NewProductDTO(
         String category,
         double price,
         String imageUrl,
-        int quantity
+        int stock,
+        int discount
 ) {
 }

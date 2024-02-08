@@ -3,6 +3,7 @@ package andreamarchica.BE_Le_Barbier_De_Rue.services;
 import andreamarchica.BE_Le_Barbier_De_Rue.entities.Role;
 import andreamarchica.BE_Le_Barbier_De_Rue.entities.User;
 import andreamarchica.BE_Le_Barbier_De_Rue.exceptions.EmailAlreadyInDbException;
+import andreamarchica.BE_Le_Barbier_De_Rue.exceptions.NotFoundException;
 import andreamarchica.BE_Le_Barbier_De_Rue.exceptions.UnauthorizedException;
 import andreamarchica.BE_Le_Barbier_De_Rue.payloads.auth.AuthRequestDTO;
 import andreamarchica.BE_Le_Barbier_De_Rue.payloads.user.NewUserDTO;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class AuthService {
@@ -56,4 +58,19 @@ public class AuthService {
             throw new EmailAlreadyInDbException(body.email());
         }
     }
+    public User findById(UUID id) {
+        return usersRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
+    }
+
+    public User findByIdAndUpdate(UUID id, NewUserDTO body) {
+        User found = this.findById(id);
+        found.setName(body.name());
+        found.setSurname(body.surname());
+        found.setEmail(body.email());
+        found.setDateOfBirth(body.dateOfBirth());
+        found.setPassword(bcrypt.encode(body.password()));
+        found.setUsername(body.username());
+        return usersRepository.save(found);
+    }
+
 }
