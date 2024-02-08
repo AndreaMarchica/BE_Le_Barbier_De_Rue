@@ -1,5 +1,7 @@
 package andreamarchica.BE_Le_Barbier_De_Rue.services;
 
+import andreamarchica.BE_Le_Barbier_De_Rue.entities.Cart;
+import andreamarchica.BE_Le_Barbier_De_Rue.entities.FidelityCard;
 import andreamarchica.BE_Le_Barbier_De_Rue.entities.Role;
 import andreamarchica.BE_Le_Barbier_De_Rue.entities.User;
 import andreamarchica.BE_Le_Barbier_De_Rue.exceptions.EmailAlreadyInDbException;
@@ -9,6 +11,8 @@ import andreamarchica.BE_Le_Barbier_De_Rue.payloads.auth.AuthRequestDTO;
 import andreamarchica.BE_Le_Barbier_De_Rue.payloads.user.NewUserDTO;
 import andreamarchica.BE_Le_Barbier_De_Rue.payloads.user.NewUserResponseDTO;
 import andreamarchica.BE_Le_Barbier_De_Rue.payloads.auth.TokenResponseDTO;
+import andreamarchica.BE_Le_Barbier_De_Rue.repository.CartsRepository;
+import andreamarchica.BE_Le_Barbier_De_Rue.repository.FidelityCardsRepository;
 import andreamarchica.BE_Le_Barbier_De_Rue.repository.UsersRepository;
 import andreamarchica.BE_Le_Barbier_De_Rue.security.JWTTtools;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +31,10 @@ public class AuthService {
 
     @Autowired
     private UsersRepository usersRepository;
+    @Autowired
+    CartsRepository cartsRepository;
+    @Autowired
+    FidelityCardsRepository fidelityCardsRepository;
 
     @Autowired
     private JWTTtools jwtTtools;
@@ -53,11 +61,25 @@ public class AuthService {
         user.setAvatar("https://ui-avatars.com/api/?name=" + body.name() + "+" + body.surname());
         user.setRole(Role.USER);
         usersRepository.save(user);
-            return new NewUserResponseDTO(user.getId());
-        }else{
-            throw new EmailAlreadyInDbException(body.email());
-        }
+
+        Cart cart = new Cart();
+        cart.setUser(user);
+        cart.setDiscount(0);
+        cart.setTotalPrice(0);
+        cartsRepository.save(cart);
+        user.setCart(cart);
+
+        FidelityCard fidelityCard = new FidelityCard();
+        fidelityCard.setComplete(false);
+        fidelityCard.setPoints(0);
+        fidelityCard.setUser(user);
+        fidelityCardsRepository.save(fidelityCard);
+        user.setFidelityCard(fidelityCard);
+
+        return new NewUserResponseDTO(user.getId());
+        } else throw new EmailAlreadyInDbException(body.email());
     }
+
     public User findById(UUID id) {
         return usersRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
     }
