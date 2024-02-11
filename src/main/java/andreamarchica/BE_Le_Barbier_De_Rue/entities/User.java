@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,8 +15,7 @@ import java.util.UUID;
 
 @Entity
 @Getter
-@ToString
-@JsonIgnoreProperties({"password"})
+@JsonIgnoreProperties({"password","cart", "authorities", "accountNonExpired", "enabled", "accountNonLocked", "credentialsNonExpired", "username"})
 public class User implements UserDetails {
     @Id
     @GeneratedValue
@@ -32,6 +30,7 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
     private FidelityCard fidelityCard;
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Cart cart;
@@ -104,5 +103,19 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", email='" + email + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", role=" + role +
+                '}';
     }
 }

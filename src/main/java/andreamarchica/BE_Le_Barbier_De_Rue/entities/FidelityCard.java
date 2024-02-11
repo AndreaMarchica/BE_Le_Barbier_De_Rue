@@ -1,5 +1,6 @@
 package andreamarchica.BE_Le_Barbier_De_Rue.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.ToString;
@@ -8,7 +9,6 @@ import java.util.UUID;
 
 @Entity
 @Getter
-@ToString
 public class FidelityCard {
     @Id
     @GeneratedValue
@@ -41,6 +41,14 @@ public class FidelityCard {
         }
     }
 
+    @Override
+    public String toString() {
+        return "FidelityCard{" +
+                "id=" + id +
+                ", complete=" + complete +
+                ", points=" + points +
+                '}';
+    }
     // Altri attributi e metodi necessari...
 
     // Getter e Setter per isComplete, se necessario
