@@ -26,6 +26,7 @@ public class User implements UserDetails {
     private LocalDate dateOfBirth;
     private String email;
     private String password;
+    private long phoneNumber;
     private String avatar;
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -55,6 +56,10 @@ public class User implements UserDetails {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public void setPassword(String password) {
@@ -108,12 +113,13 @@ public class User implements UserDetails {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
+                "username='" + username + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phoneNumber=" + phoneNumber +
                 ", avatar='" + avatar + '\'' +
                 ", role=" + role +
                 '}';

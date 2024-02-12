@@ -8,6 +8,7 @@ public record NewUserDTO(
         String username,
         LocalDate dateOfBirth,
         String email,
-        String password
+        String password,
+        Long phoneNumber
 ) {
 }

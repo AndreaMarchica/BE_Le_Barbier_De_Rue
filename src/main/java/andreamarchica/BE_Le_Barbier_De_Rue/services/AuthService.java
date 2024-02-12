@@ -58,6 +58,7 @@ public class AuthService {
         user.setDateOfBirth(body.dateOfBirth());
         user.setEmail(body.email());
         user.setPassword(bcrypt.encode(body.password()));
+        user.setPhoneNumber(body.phoneNumber());
         user.setAvatar("https://ui-avatars.com/api/?name=" + body.name() + "+" + body.surname());
         user.setRole(Role.USER);
         usersRepository.save(user);
@@ -92,6 +93,7 @@ public class AuthService {
         found.setDateOfBirth(body.dateOfBirth());
         found.setPassword(bcrypt.encode(body.password()));
         found.setUsername(body.username());
+        found.setPhoneNumber(body.phoneNumber());
         return usersRepository.save(found);
     }
 
