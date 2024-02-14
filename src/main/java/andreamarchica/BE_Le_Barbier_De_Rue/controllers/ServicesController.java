@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -31,13 +32,17 @@ public class ServicesController {
         Service newService = servicesService.save(body);
         return new NewServiceResponseDTO(newService.getId());
     }
-    @GetMapping("")
+/*    @GetMapping("")
     public Page<Service> getServices(
             @RequestParam(defaultValue ="0") int page,
             @RequestParam(defaultValue ="0") int size,
             @RequestParam(defaultValue ="0") String sortBy) {
         return servicesService.getServices(page, size, sortBy);
-    }
+    }*/
+@GetMapping("")
+public List<Service> getServices() {
+    return servicesService.getServices();
+}
     @GetMapping("/{serviceId}")
     public Service findById(@PathVariable UUID serviceId) {
         return servicesService.findById(serviceId);
