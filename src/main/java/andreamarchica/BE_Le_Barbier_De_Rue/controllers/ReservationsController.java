@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -29,11 +30,15 @@ public class ReservationsController {
             return reservationsService.save(body);
         }
     }
-    @GetMapping("")
+/*    @GetMapping("")
     public Page<Reservation> getReservations(@RequestParam(defaultValue = "0") int page,
                                             @RequestParam(defaultValue = "10") int size,
                                             @RequestParam(defaultValue = "id") String orderBy) {
         return reservationsService.getReservations(page, size, orderBy);
+    }*/
+    @GetMapping("")
+    public List<Reservation> getReservations() {
+        return reservationsService.getReservations();
     }
     @GetMapping("/{reservationId}")
     public Reservation findById(@PathVariable UUID reservationId) {

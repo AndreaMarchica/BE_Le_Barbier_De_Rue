@@ -17,10 +17,8 @@ public class Reservation {
     private LocalDateTime reservationDate;
     private LocalDateTime reservedOn;
     private boolean alreadyPayed;
-    @Enumerated(EnumType.STRING)
-    private HaircutType haircutType;
-    @Enumerated(EnumType.STRING)
-    private BeardcutType beardcutType;
+    private UUID haircutId;
+    private UUID beardcutId;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -37,12 +35,13 @@ public class Reservation {
         this.alreadyPayed = alreadyPayed;
     }
 
-    public void setHaircutType(HaircutType haircutType) {
-        this.haircutType = haircutType;
+
+    public void setHaircutId(UUID haircutId) {
+        this.haircutId = haircutId;
     }
 
-    public void setBeardcutType(BeardcutType beardcutType) {
-        this.beardcutType = beardcutType;
+    public void setBeardcutId(UUID beardcutId) {
+        this.beardcutId = beardcutId;
     }
 
     public void setUser(User user) {

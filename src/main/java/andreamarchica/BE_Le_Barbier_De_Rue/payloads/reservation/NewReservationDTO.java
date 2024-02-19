@@ -8,8 +8,8 @@ import java.util.UUID;
 
 public record NewReservationDTO(
         LocalDateTime reservationDate,
-        HaircutType haircutType,
-        BeardcutType beardcutType,
+        UUID haircutId,
+        UUID beardcutId,
         UUID userId
 ) {
 }

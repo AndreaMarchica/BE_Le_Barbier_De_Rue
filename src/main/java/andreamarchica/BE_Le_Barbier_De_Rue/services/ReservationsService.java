@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -28,14 +29,17 @@ public class ReservationsService {
         reservation.setReservationDate(body.reservationDate());
         reservation.setReservedOn(LocalDateTime.now());
         reservation.setAlreadyPayed(false);
-        reservation.setHaircutType(body.haircutType());
-        reservation.setBeardcutType(body.beardcutType());
+        reservation.setHaircutId(body.haircutId());
+        reservation.setBeardcutId(body.beardcutId());
         reservation.setUser(user);
     return reservationsRepository.save(reservation);
     }
-    public Page<Reservation> getReservations(int page, int size, String sortBy) {
+/*    public Page<Reservation> getReservations(int page, int size, String sortBy) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
         return reservationsRepository.findAll(pageable);
+    }*/
+    public List<Reservation> getReservations() {
+        return reservationsRepository.findAll();
     }
     public Reservation findById(UUID id){
         return reservationsRepository.findById(id).orElseThrow(()->new NotFoundException(id));
