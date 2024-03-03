@@ -18,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -31,12 +32,16 @@ public class UsersController {
     @Autowired
     UsersRepository usersRepository;
 
-    @GetMapping("")
+/*    @GetMapping("")
     public Page<User> getUsers(@RequestParam(defaultValue = "0") int page,
                               @RequestParam(defaultValue = "10") int size,
                               @RequestParam(defaultValue = "id") String orderBy) {
         return usersService.getUsers(page, size, orderBy);
-    }
+    }*/
+@GetMapping("")
+public List<User> getUsersList(){
+    return usersService.getUsersList();
+}
     @GetMapping("/{userId}")
     public User findById(@PathVariable UUID userId) {
         return usersService.findById(userId);

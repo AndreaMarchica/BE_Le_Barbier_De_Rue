@@ -19,6 +19,7 @@ public class Reservation {
     private boolean alreadyPayed;
     private UUID haircutId;
     private UUID beardcutId;
+    private UUID comboId;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -35,6 +36,9 @@ public class Reservation {
         this.alreadyPayed = alreadyPayed;
     }
 
+    public void setComboId(UUID comboId) {
+        this.comboId = comboId;
+    }
 
     public void setHaircutId(UUID haircutId) {
         this.haircutId = haircutId;

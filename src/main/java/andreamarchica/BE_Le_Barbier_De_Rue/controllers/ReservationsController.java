@@ -5,10 +5,14 @@ import andreamarchica.BE_Le_Barbier_De_Rue.entities.Reservation;
 import andreamarchica.BE_Le_Barbier_De_Rue.entities.Service;
 import andreamarchica.BE_Le_Barbier_De_Rue.exceptions.BadRequestException;
 import andreamarchica.BE_Le_Barbier_De_Rue.payloads.reservation.NewReservationDTO;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.reservation.NewReservationResponseDTO;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.reservation.ReservationUpdateDTO;
+import andreamarchica.BE_Le_Barbier_De_Rue.payloads.user.NewUserResponseDTO;
 import andreamarchica.BE_Le_Barbier_De_Rue.services.ReservationsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -48,5 +52,16 @@ public class ReservationsController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void findAndDelete(@PathVariable UUID reservationId) {
         reservationsService.findByIdAndDelete(reservationId);
+    }
+    @PutMapping("/{reservationId}")
+    @ResponseStatus(HttpStatus.OK)
+    public NewReservationResponseDTO modify(@RequestBody @Validated ReservationUpdateDTO body,
+                                            @PathVariable UUID reservationId, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            System.err.println(bindingResult.getAllErrors());
+            throw new BadRequestException("Error in payload for the PUT method" + bindingResult.getAllErrors());
+        } else {
+            return reservationsService.modify(body, reservationId);
+        }
     }
 }

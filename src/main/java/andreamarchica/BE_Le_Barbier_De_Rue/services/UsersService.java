@@ -1,5 +1,6 @@
 package andreamarchica.BE_Le_Barbier_De_Rue.services;
 
+import andreamarchica.BE_Le_Barbier_De_Rue.entities.Reservation;
 import andreamarchica.BE_Le_Barbier_De_Rue.entities.User;
 import andreamarchica.BE_Le_Barbier_De_Rue.exceptions.NotFoundException;
 import andreamarchica.BE_Le_Barbier_De_Rue.payloads.user.NewUserDTO;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -30,6 +32,10 @@ public class UsersService {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
         return usersRepository.findAll(pageable);
     }
+    public List<User> getUsersList() {
+        return usersRepository.findAll();
+    }
+
     public void findByIdAndDelete (UUID id){
         usersRepository.delete(this.findById(id));
     }

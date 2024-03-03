@@ -15,7 +15,7 @@ import java.util.UUID;
 
 @Entity
 @Getter
-@JsonIgnoreProperties({"password","cart", "authorities", "accountNonExpired", "enabled", "accountNonLocked", "credentialsNonExpired", "username"})
+@JsonIgnoreProperties({"password","cart", "authorities", "accountNonExpired", "enabled", "accountNonLocked", "credentialsNonExpired"})
 public class User implements UserDetails {
     @Id
     @GeneratedValue

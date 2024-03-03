@@ -10,6 +10,7 @@ public record NewReservationDTO(
         LocalDateTime reservationDate,
         UUID haircutId,
         UUID beardcutId,
+        UUID comboId,
         UUID userId
 ) {
 }
