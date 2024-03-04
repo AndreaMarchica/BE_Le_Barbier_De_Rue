@@ -20,6 +20,7 @@ public class Service {
     private String name;
     private String description;
     private String category;
+    private int duration;
     private double price;
     private int discount;
 
@@ -37,6 +38,10 @@ public class Service {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     public void setDiscount(int discount) {

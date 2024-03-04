@@ -20,6 +20,7 @@ public class ServicesService {
         service.setName(body.name());
         service.setDescription(body.description());
         service.setCategory(body.category());
+        service.setDuration(body.duration());
         service.setPrice(body.price());
         service.setDiscount(body.discount());
         return servicesRepository.save(service);
@@ -42,6 +43,7 @@ public class ServicesService {
         found.setName(body.name());
         found.setDescription(body.description());
         found.setCategory(body.category());
+        found.setDuration(body.duration());
         found.setPrice(body.price());
         found.setDiscount(body.discount());
         return servicesRepository.save(found);
