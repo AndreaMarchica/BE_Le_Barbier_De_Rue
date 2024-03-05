@@ -1,6 +1,7 @@
 package andreamarchica.BE_Le_Barbier_De_Rue.controllers;
 
 import andreamarchica.BE_Le_Barbier_De_Rue.entities.Product;
+import andreamarchica.BE_Le_Barbier_De_Rue.entities.Service;
 import andreamarchica.BE_Le_Barbier_De_Rue.exceptions.BadRequestException;
 import andreamarchica.BE_Le_Barbier_De_Rue.payloads.product.NewProductDTO;
 import andreamarchica.BE_Le_Barbier_De_Rue.payloads.product.NewProductResponseDTO;
@@ -12,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -28,12 +30,16 @@ public class ProductsController {
         Product newProduct = productsService.save(body);
         return new NewProductResponseDTO(newProduct.getId());
     }
-    @GetMapping("")
+/*    @GetMapping("")
     public Page<Product> getProducts(@RequestParam(defaultValue = "0") int page,
                                     @RequestParam(defaultValue = "10") int size,
                                     @RequestParam(defaultValue = "id") String orderBy) {
         return productsService.getProducts(page, size, orderBy);
-    }
+    }*/
+@GetMapping("")
+public List<Product> getProducts() {
+    return productsService.getProducts();
+}
     @GetMapping("/{productId}")
     public Product findById(@PathVariable UUID productId) {
         return productsService.findById(productId);
